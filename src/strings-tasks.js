@@ -299,8 +299,11 @@ function orderAlphabetically(str) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  if (str.includes(substring)) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -317,8 +320,16 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  const arr = str.split('');
+  const vowels = ['a', 'e', 'i', 'o', 'u', 'y'];
+  let count = 0;
+  for (let i = 0; i < str.length; i += 1) {
+    if (vowels.includes(arr[i].toLowerCase())) {
+      count += 1;
+    }
+  }
+  return count;
 }
 
 /**
@@ -334,8 +345,19 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const lowerString = str.toLowerCase();
+  const halfLength = Math.floor(str.length / 2);
+  if (str.length > 1) {
+    for (let i = 0; i < halfLength; i += 1) {
+      if (lowerString[i] === lowerString[str.length - i - 1]) {
+        return true;
+      }
+    }
+  } else if (str.length === 1) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -350,8 +372,17 @@ function isPalindrome(/* str */) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  const arr = sentence.split(' ');
+  let letterCount = 0;
+  let longestWord = '';
+  for (let i = 0; i < arr.length; i += 1) {
+    if (letterCount < arr[i].length) {
+      letterCount = arr[i].length;
+      longestWord = arr[i];
+    }
+  }
+  return longestWord;
 }
 
 /**
